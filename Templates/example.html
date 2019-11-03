@@ -1,0 +1,32 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+
+    <!doctype html>
+    <html lang="en">
+
+        <body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="alert alert-dark" role="alert">
+                            <h2>Prueba de imagen</h2>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="file" name="document">
+                                <button type="submit"> Upload file </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </body>
+
+    </html>
+
+
+{% endblock %}

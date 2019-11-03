@@ -1,0 +1,35 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+
+<!doctype html>
+    <html lang="en">
+
+        <body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="alert alert-dark" role="alert">
+                            Ficha de pacientes
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="alert alert-secondary" role="alert">
+                            <form method ="post" enctype="multipart/form-data"
+                                {{ csrf_token }}
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-primary">Registrar paciente</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </body>
+    </html>
+
+{% endblock %}
