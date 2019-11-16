@@ -5,6 +5,13 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 
+class Example(models.Model):
+    Nombre = models.CharField(max_length=40)
+    DNI = models.DecimalField(decimal_places=0, max_digits=8, null=True)
+    Imagen = models.ImageField(upload_to='Example')
+
+    def __str__(self):
+        return self.Nombre
 
 class Ficha(models.Model):
     Si = 'Sí'

@@ -13,9 +13,32 @@
                         <div class="alert alert-dark" role="alert">
                           Lista de pacientes
                         </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>DNI</th>
+                                    <th>Edad</th>
+                                    <th>Tiempo de enfermedad</th>
+                                    <th>Sensibilidad neurovegetativa alterada</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ficha in lista %}
+                                    <tr>
+                                        <td> {{ ficha.Nombre }} </td>
+                                        <td> {{ ficha.DNI }} </td>
+                                        <td> {{ ficha.Edad }} </td>
+                                        <td> {{ ficha.Tiempo_de_enfermedad }}</td>
+                                        <td> {{ ficha.Sensibilidad_neurovegetativa_alterada }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+
 
         </body>
     </html>

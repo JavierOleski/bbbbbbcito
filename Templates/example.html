@@ -10,23 +10,18 @@
                 <div class="row">
                     <div class="col-auto">
                         <div class="alert alert-dark" role="alert">
-                            <h2>Prueba de imagen</h2>
-                            <form method="post" enctype="multipart/form-data">
+                            <h2>Prueba de subida</h2>
+                            <form method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                <input type="file" name="document">
-                                <button type="submit"> Upload file </button>
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-primary">Subir ejemplo</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-
-
         </body>
-
     </html>
-
 
 {% endblock %}

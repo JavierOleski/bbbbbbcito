@@ -9,11 +9,12 @@ from app import views
 urlpatterns = [
 
     path('example/', views.example, name="example"),
+    path('example/list/', views.example_list, name="example_list"),
     path('', views.home, name="home"),
     path('home/', views.home, name="home"),
     path('acercade/', views.acercade, name="acercade"),
     path('registro/', views.registrarse, name="registro"),
-    path('pacientes/', views.lista_pacientes, name="pacientes"),
+    path('pacientes/', views.lista_pacientes, name="lista_pacientes"),
     path('pacientes/ficha/', views.ficha, name="ficha"),
 
 ]

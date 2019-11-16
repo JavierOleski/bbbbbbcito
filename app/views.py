@@ -1,8 +1,8 @@
 from django.core.files.storage import default_storage, FileSystemStorage
 from django.db.models.fields.files import FieldFile
 from django.shortcuts import render, redirect
-from .forms import FichaForm
-from .models import Ficha
+from .forms import FichaForm, EjemploForm
+from .models import Ficha, Example
 from django.contrib.auth.forms import UserCreationForm
 
 # http://yuji.wordpress.com/2013/01/30/django-form-field-in-initial-data-requires-a-fieldfile-instance/
@@ -31,10 +31,27 @@ def acercade(request):
     return render(request, 'acercade.html')
 
 def lista_pacientes(request):
-    return render(request, 'lista_pacientes.html')
+    lista = Ficha.objects.all()
+    return render(request, 'lista_pacientes.html', {
+        'lista': lista
+    })
+
+
+def example_list(request):
+    ejemplos = Example.objects.all()
+    return render(request, 'example_list.html', {
+        'ejemplos': ejemplos
+    })
+
 
 def ficha(request):
-    form = FichaForm
+    if request.method == 'POST':
+        form = FichaForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_pacientes')
+    else:
+        form = FichaForm()
     return render(request, 'ficha.html', {
         'form': form
     })
@@ -42,9 +59,12 @@ def ficha(request):
 
 def example(request):
     if request.method == 'POST':
-        myfile = request.FILES['document']
-        print(myfile.name)
-        print(myfile.size)
-        fs = FileSystemStorage()
-        fs.save(myfile.name, myfile)
-    return render(request, 'example.html')
+        form = EjemploForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('example_list')
+    else:
+        form = EjemploForm()
+    return render(request, 'example.html', {
+        'form': form
+    })
